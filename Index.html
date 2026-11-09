@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Royal Wedding Invitation</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to right, #fceabb, #f8b500);
+      color: #333;
+      text-align: center;
+    }
+    header {
+      background-image: url('https://images.unsplash.com/photo-raj-mahal'); /* Replace with your Rajasthan image */
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      color: white;
+      text-shadow: 2px 2px 5px #000;
+    }
+    header h1 {
+      font-size: 3.5em;
+      margin: 0;
+    }
+    header h2 {
+      font-size: 2em;
+      margin-top: 10px;
+    }
+    .details {
+      background: #fff;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 700px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .details h3 {
+      color: #b22222;
+      margin-bottom: 10px;
+    }
+    .countdown {
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: #444;
+    }
+    .rsvp button {
+      background: #b22222;
+      color: #fff;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .rsvp button:hover {
+      background: #8b1a1a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prateek & Aanya</h1>
+    <h2>Royal Wedding Celebration</h2>
+    <p>Experience the grandeur of Rajasthan ✨</p>
+  </header>
+
+  <div class="details">
+    <h3>Wedding Date</h3>
+    <p>15th December 2026</p>
+
+    <h3>Venue</h3>
+    <p>Royal Palace Banquet, Jaipur</p>
+
+    <h3>Dress Code</h3>
+    <p>Traditional / Indo-Western</p>
+
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <div class="rsvp">
+    <h3>RSVP</h3>
+    <p>Please confirm your presence:</p>
+    <button onclick="window.location.href='https://forms.gle/yourGoogleFormLink'">Confirm Attendance</button>
+  </div>
+
+  <script>
+    // Countdown Timer
+    const weddingDate = new Date("Dec 15, 2026 18:00:00").getTime();
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "The Celebration Has Begun!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
